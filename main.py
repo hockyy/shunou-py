@@ -71,29 +71,31 @@ def split_furigana(text):
                 kana = node.surface
             hiragana = jaconv.kata2hira(kana)
             # print(origin, kana, hiragana)
-            ret += okurigana_process(origin, hiragana)
+            ret += [okurigana_process(origin, hiragana)]
         else:
             if origin:
-                ret += [(origin,)]
+                ret += [[(origin,)]]
         node = node.next
     return ret
 
 
 def print_html(text, file=None):
-    furigana = split_furigana(text)
-    print(furigana)
-    for pair in furigana:
-        if len(pair)==2:
-            kanji,hira = pair
-            print("<ruby><rb>{0}</rb><rt>{1}</rt></ruby>".
-                    format(kanji, hira), end='', file=file)
-        else:
-            print(pair[0], end='', file=file)
+    words = split_furigana(text)
+    print(words)
+    for word in words:
+        print('&nbsp;', file=file)
+        for pair in word:
+            if len(pair)==2:
+                kanji,hira = pair
+                print("<ruby><rb>{0}</rb><rt>{1}</rt></ruby>".
+                        format(kanji, hira), end='', file=file)
+            else:
+                print(pair[0], end='', file=file)
     print('', file=file)
 
 
 def print_plaintext(text, file=None):
-    for pair in split_furigana(text)[0]:
+    for pair in split_furigana(text):
         if len(pair) == 2:
             kanji,hira = pair
             print("%s(%s)" % (kanji,hira), end='', file=file)
