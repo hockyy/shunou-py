@@ -2,6 +2,10 @@
 
 Shunou uses mecab-python3, which is a binding for the CLI of MeCab. It should be available for EVERY OS!
 
+This repo is heavily referenced by:
+- https://github.com/MikimotoH/furigana
+- https://github.com/hockyy/nican
+
 ## MacOS Setup
 
 - Install `mecab` via brew
