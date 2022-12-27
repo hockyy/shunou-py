@@ -7,7 +7,7 @@ Shunou uses mecab-python3, which is a binding for the CLI of MeCab. It should be
 - Install `mecab` via brew
 
 - Install `pyenv` via brew
-- Install the python 3.9, the developer uses 3.9.16 in MacOS M1 running Ventura
+- Install the python 3.9 through pyenv, the developer uses 3.9.16 in MacOS M1 running Ventura
 
 ## Manual Dictionary for UniDic 
 
